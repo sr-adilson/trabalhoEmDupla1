@@ -10,7 +10,9 @@ namespace ProjetoEmDupla1
     {
         static void Main(string[] args)
         {
-
+            MenuProd menuprod = new MenuProd();
+            menuprod.cadastro();
+            Console.ReadLine();
         }
     }
 }
