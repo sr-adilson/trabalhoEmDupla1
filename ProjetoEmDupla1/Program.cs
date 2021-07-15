@@ -8,9 +8,11 @@ namespace ProjetoEmDupla1
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-
+            Menu menu = new Menu();
+            menu.MontaMenu();
+            Console.ReadLine();
         }
     }
 }
