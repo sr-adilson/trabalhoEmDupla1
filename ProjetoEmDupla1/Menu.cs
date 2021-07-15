@@ -12,15 +12,11 @@ namespace ProjetoEmDupla1
         List<Produto> listaP = new List<Produto>();
         public void MontaMenu()
         {
-            //bool sair = false;
-            //do
-	        //{
-                //Console.Clear();
-                Cabecalho();
-                Opcoes();
-                Rodape();
-                Escolha();
-	        //} while (/*sair == false*/true);
+            Console.Clear();
+            Cabecalho();
+            Opcoes();
+            Rodape();
+            Escolha();
         }
 
         private void Cabecalho()
@@ -47,43 +43,49 @@ namespace ProjetoEmDupla1
             switch (opcao)
             {
                 case 0:
-                    //sair = true;
-                    Console.WriteLine("Tchau!");
+                    Console.WriteLine("Pressione ENTER para sair...");
                     break;
                 case 1:
-                    Console.Clear();
-                    Produto produto = new Produto();
-                    CabecalhoProduto();
-                    produto.PedeProduto();
-                    listaP.Add(produto);
-                    break;
-                case 2:
                     char repetir = 's';
                     do
                     {
                         Console.Clear();
+                        Produto produto = new Produto();
+                        CabecalhoProduto();
+                        produto.PedeProduto();
+                        listaP.Add(produto);
+                        Console.Write("\nDe novo? (s/n)");
+                        repetir = Convert.ToChar(Console.ReadLine().Trim());
+                    } while (repetir.Equals('s'));
+                    MontaMenu();
+                    break;
+                case 2:
+                    repetir = 's';
+                    do
+                    {
+                        Console.Clear();
+                        Categoria categoria = new Categoria();
                         CabecalhoCategoria();
-                        Console.Write("ID: ");
-                        int id = Convert.ToInt32(Console.ReadLine());
-                        Console.Write("Nome: ");
-                        string nome = Console.ReadLine();
-                        Console.Write("Descrição: ");
-                        string desc = Console.ReadLine();
-                        Categoria model = new Categoria(id, nome, desc);
-                        listaC.Add(model);
-                        Console.Write("De novo? (s/n)");
+                        categoria.PedeCategoria();
+                        listaC.Add(categoria);
+                        Console.Write("\nDe novo? (s/n)");
                         repetir = Convert.ToChar(Console.ReadLine());
                     } while (repetir.Equals('s'));
                     MontaMenu();
                     break;
                 case 3:
+                    Console.Clear();
+                    CabecalhoProdutoCadastrado();
                     ExibirProduto();
-                    // Exibir dados cadastrados em Produto
+                    Console.ReadLine();
+                    MontaMenu();
                     break;
                 case 4:
+                    Console.Clear();
+                    CabecalhoCategoriaCadastrado();
                     ExibirCategoria();
-                    //Console.ReadLine();
-                    // Exibir dados cadastrados em Categoria
+                    Console.ReadLine();
+                    MontaMenu();
                     break;
                 default:
                     Console.WriteLine("Opção Inválida!");
@@ -101,6 +103,16 @@ namespace ProjetoEmDupla1
             Console.WriteLine("============== CADASTRO CATEGORIA ==============");
         }
 
+        private void CabecalhoProdutoCadastrado()
+        {
+            Console.WriteLine("============= PRODUTOS CADASTRADOS =============");
+        }
+
+        private void CabecalhoCategoriaCadastrado()
+        {
+            Console.WriteLine("============ CATEGORIAS CADASTRADOS ============");
+        }
+
         public void ExibirProduto()
         {
             foreach (Produto p in listaP)
@@ -115,26 +127,6 @@ namespace ProjetoEmDupla1
             {
                 Console.WriteLine("ID: " + c.IdCategoria + "   Nome: " + c.NomeCategoria + "   Descrição: " + c.DescricaoCategoria);
             }
-        }
-
-        /*public void ExibirCategoria()
-        {
-            foreach (Categoria c in listaC)
-            {
-                Console.WriteLine(c);
-            }
-            Console.WriteLine("...");
-        }*/
-
-        public void PedeCategoria()
-        {
-            Console.Write("ID: ");
-            int id = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
-            Console.Write("Descrição: ");
-            string desc = Console.ReadLine();
-            listaC.Add(new Categoria(id, nome, desc));
         }
     }
 }
