@@ -81,13 +81,11 @@ namespace ProjetoEmDupla1.Views
                     //repetir = 's';
                     //do
                     //{
-                    //    //Console.Clear();
-                    //    //Categoria categoria = new Categoria();
-                    //    //CabecalhoCategoria();
-                    //    //categoria.PedeCategoria();
-                    //    //listaC.Add(categoria);
-                    //    //Console.Write("\nDe novo? (s/n)");
-                    //    //repetir = Convert.ToChar(Console.ReadLine());
+                    //    Console.Clear();
+                    //    CabecalhoCategoria();
+                    //    listaC.Add(cadastro.CadastroCategoria());
+                    //    Console.Write("\nDe novo? (s/n)");
+                    //    repetir = Convert.ToChar(Console.ReadLine());
                     //} while (repetir.Equals('s'));
                     //MontaMenu();
                     break;
@@ -135,7 +133,7 @@ namespace ProjetoEmDupla1.Views
         {
             foreach (Produto p in listaP)
             {
-                Console.WriteLine("ID: " + p.Id + "   Nome: " + p.Nome + "   Valor: " + p.Valor);
+                Console.WriteLine("ID: " + p.Id + "   Nome: " + p.Nome + "   Valor: " + p.Valor + " Categoria: " + p.Categorias.Id+"- "+p.Categorias.Nome);
             }
         }
 
