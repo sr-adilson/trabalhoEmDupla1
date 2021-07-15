@@ -11,18 +11,21 @@ namespace ProjetoEmDupla1
         //public int idCategoria = 0;
         //public string nomeCategoria = String.Empty;
         //public string descricaoCategoria = String.Empty;
-        public int idCategoria { get; set; }
-        public string nomeCategoria { get; set; }
-        public string descricaoCategoria { get; set; }
-         //id, nome, descricao
-        public void PedeCategoria()
+        public int IdCategoria { get; set; }
+        public string NomeCategoria { get; set; }
+        public string DescricaoCategoria { get; set; }
+        //id, nome, descricao
+
+        public Categoria(int id, string nome, string desc)
         {
-            Console.Write("Id Categoria: ");
-            this.idCategoria = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Nome Categoria: ");
-            this.nomeCategoria = Console.ReadLine();
-            Console.Write("Descrição Categoria: ");
-            this.descricaoCategoria = Console.ReadLine();
+            IdCategoria = id;
+            NomeCategoria = nome;
+            DescricaoCategoria = desc;
+        }
+
+        public override string ToString()
+        {
+            return $"ID: {IdCategoria}\t Nome: {NomeCategoria}\t Descrição: {DescricaoCategoria}";
         }
     }
 }
