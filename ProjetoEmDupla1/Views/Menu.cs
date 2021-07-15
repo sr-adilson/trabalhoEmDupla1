@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetoEmDupla1.Models;
 
-namespace ProjetoEmDupla1
+
+namespace ProjetoEmDupla1.Views
 {
     class Menu
     {
@@ -117,7 +119,7 @@ namespace ProjetoEmDupla1
         {
             foreach (Produto p in listaP)
             {
-                Console.WriteLine("ID: " + p.IdProduto + "   Nome: " + p.NomeProduto + "   Valor: " + p.ValorProduto);
+                Console.WriteLine("ID: " + p.Id + "   Nome: " + p.Nome + "   Valor: " + p.Valor);
             }
         }
 
@@ -125,7 +127,7 @@ namespace ProjetoEmDupla1
         {
             foreach (Categoria c in listaC)
             {
-                Console.WriteLine("ID: " + c.IdCategoria + "   Nome: " + c.NomeCategoria + "   Descrição: " + c.DescricaoCategoria);
+                Console.WriteLine("ID: " + c.Id + "   Nome: " + c.Nome + "   Descrição: " + c.Descricao);
             }
         }
     }
