@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Views\Cadastro.cs" />
     <Compile Include="Views\Menu.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Program.cs" />

@@ -12,15 +12,12 @@ namespace ProjetoEmDupla1.Models
 
         public Categoria Categorias { get; set; }
 
-        public void PedeProduto()
+        public Produto(int id, string nome, decimal valor, Categoria categoria)
         {
-            Console.Write("ID: ");
-            Id = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Nome: ");
-            Nome = Console.ReadLine();
-            Console.Write("Valor: ");
-            Valor = Convert.ToDecimal(Console.ReadLine());
-            Categorias.PedeCategoria();
+            Id = id;
+            Nome = nome;
+            Valor = valor;
+            this.Categorias = categoria;
         }
     }
 }

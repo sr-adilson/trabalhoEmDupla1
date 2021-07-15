@@ -10,14 +10,12 @@ namespace ProjetoEmDupla1.Models
     {
         public string Descricao { get; set; }
 
-        public void PedeCategoria()
+        public Categoria(int id, string nome, string descricao)
         {
-            Console.Write("ID Categoria: ");
-            Id = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Nome Categoria: ");
-            Nome = Console.ReadLine();
-            Console.Write("Descrição Categoria: ");
-            Descricao = Console.ReadLine();
+
+            Id = id;
+            Nome = nome;
+            Descricao = descricao;
         }
 
     }

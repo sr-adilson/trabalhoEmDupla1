@@ -10,6 +10,9 @@ namespace ProjetoEmDupla1.Views
 {
     class Menu
     {
+
+        Cadastro cadastro = new Cadastro();
+
         List<Categoria> listaC = new List<Categoria>();
         List<Produto> listaP = new List<Produto>();
         public void MontaMenu()
@@ -29,7 +32,7 @@ namespace ProjetoEmDupla1.Views
 
         private void Opcoes()
         {
-            Console.WriteLine("\t0 - Sair\n\t1 - Cadastro de Produto\n\t2 - Cadastro de Categoria\n\t3 - Exibir Produtos Cadastrados\n\t4 - Exibir Categorias Cadastradas");
+            Console.WriteLine("\t0 - Sair\n\t1 - Cadastro de Produto\n\t2 - Cadastro de Categoria(não usual)\n\t3 - Exibir Produtos Cadastrados\n\t4 - Exibir Categorias Cadastradas");
         }
 
         private void Rodape()
@@ -52,28 +55,41 @@ namespace ProjetoEmDupla1.Views
                     do
                     {
                         Console.Clear();
-                        Produto produto = new Produto();
-                        CabecalhoProduto();
-                        produto.PedeProduto();
-                        listaP.Add(produto);
-                        Console.Write("\nDe novo? (s/n)");
-                        repetir = Convert.ToChar(Console.ReadLine().Trim());
+
+                        ExibirCategoria();
+
+                        Console.Write("\nDigite o id da categoria: ");
+                        int id = Convert.ToInt32(Console.ReadLine());
+                        try
+                        {
+                            listaP.Add(cadastro.CadastroProduto(BuscaCategoria(id)));
+                            Console.Write("\nDe novo? (s/n)");
+                            repetir = Convert.ToChar(Console.ReadLine().Trim());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message + "\nCadastre uma nova categoria!!.");
+                            listaC.Add(cadastro.CadastroCategoria());
+                        }
+
                     } while (repetir.Equals('s'));
                     MontaMenu();
                     break;
                 case 2:
-                    repetir = 's';
-                    do
-                    {
-                        Console.Clear();
-                        Categoria categoria = new Categoria();
-                        CabecalhoCategoria();
-                        categoria.PedeCategoria();
-                        listaC.Add(categoria);
-                        Console.Write("\nDe novo? (s/n)");
-                        repetir = Convert.ToChar(Console.ReadLine());
-                    } while (repetir.Equals('s'));
-                    MontaMenu();
+
+                    Console.WriteLine("Não vai!!");
+                    //repetir = 's';
+                    //do
+                    //{
+                    //    //Console.Clear();
+                    //    //Categoria categoria = new Categoria();
+                    //    //CabecalhoCategoria();
+                    //    //categoria.PedeCategoria();
+                    //    //listaC.Add(categoria);
+                    //    //Console.Write("\nDe novo? (s/n)");
+                    //    //repetir = Convert.ToChar(Console.ReadLine());
+                    //} while (repetir.Equals('s'));
+                    //MontaMenu();
                     break;
                 case 3:
                     Console.Clear();
@@ -130,5 +146,19 @@ namespace ProjetoEmDupla1.Views
                 Console.WriteLine("ID: " + c.Id + "   Nome: " + c.Nome + "   Descrição: " + c.Descricao);
             }
         }
+
+        public Categoria BuscaCategoria(int id)
+        {
+            foreach (Categoria categoria in listaC)
+            {
+                if (categoria.Id.Equals(id))
+                {
+                    return categoria;
+                }
+            }
+
+            throw new Exception("Id não encontrado ");
+        }
+
     }
 }
