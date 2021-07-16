@@ -33,8 +33,21 @@ namespace ProjetoEmDupla1.Views
             string nome = Console.ReadLine();
 
             Console.Write("\nDigite um valor para o produto: ");
-            decimal valor = Convert.ToDecimal(Console.ReadLine());
 
+            decimal valor = 0;
+
+
+            while (true)
+            {
+                try
+                {
+                  valor = Convert.ToDecimal(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Valor invalido, tente novamente!!");
+                }
+            }
             Produto produto = new Produto(id, nome, valor, categoria);
 
             return produto;
