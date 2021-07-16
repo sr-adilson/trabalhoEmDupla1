@@ -52,27 +52,39 @@ namespace ProjetoEmDupla1.Views
                     break;
                 case 1:
                     char repetir = 's';
-                    do
+
+                    ExibirCategoria();
+
+
+                    while (true)
                     {
-                        Console.Clear();
-
-                        ExibirCategoria();
-
-                        Console.Write("\nDigite o id da categoria: ");
-                        int id = Convert.ToInt32(Console.ReadLine());
                         try
                         {
-                            listaP.Add(cadastro.CadastroProduto(BuscaCategoria(id)));
-                            Console.Write("\nDe novo? (s/n)");
-                            repetir = Convert.ToChar(Console.ReadLine().Trim());
+                            Console.Write("\nDigite o id da categoria: ");
+                            int id = Convert.ToInt32(Console.ReadLine());
+                            Console.Clear();
+                            do
+                            {
+                                try
+                                {
+                                    listaP.Add(cadastro.CadastroProduto(BuscaCategoria(id)));
+                                    Console.Write("\nDe novo? (s/n)");
+                                    repetir = Convert.ToChar(Console.ReadLine().Trim());
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message + "\nCadastre uma nova categoria!!.");
+                                    listaC.Add(cadastro.CadastroCategoria());
+                                }
+                            } while (repetir.Equals('s'));
+                            break;
                         }
-                        catch (Exception ex)
+                        catch (FormatException)
                         {
-                            Console.WriteLine(ex.Message + "\nCadastre uma nova categoria!!.");
-                            listaC.Add(cadastro.CadastroCategoria());
+                            Console.WriteLine("Valor ID Inválido, tente novamente!!!");
                         }
+                    }
 
-                    } while (repetir.Equals('s'));
                     MontaMenu();
                     break;
                 case 2:
@@ -133,7 +145,7 @@ namespace ProjetoEmDupla1.Views
         {
             foreach (Produto p in listaP)
             {
-                Console.WriteLine("ID: " + p.Id + "   Nome: " + p.Nome + "   Valor: " + p.Valor + " Categoria: " + p.Categorias.Id+"- "+p.Categorias.Nome);
+                Console.WriteLine("ID: " + p.Id + "   Nome: " + p.Nome + "   Valor: " + p.Valor + " Categoria: " + p.Categorias.Id + "- " + p.Categorias.Nome);
             }
         }
 

@@ -14,9 +14,20 @@ namespace ProjetoEmDupla1.Views
     {
         public Produto CadastroProduto(Categoria categoria)
         {
-
-            Console.Write("\nDigite um id para o produto: ");
-            int id = Convert.ToInt32(Console.ReadLine());
+            int id = 0;
+            while (true)
+            {
+                try
+                {
+                    Console.Write("\nDigite um id para o produto: ");
+                    id = Convert.ToInt32(Console.ReadLine());
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Valor do id invalido, tente novamente!!");
+                }
+            }
 
             Console.Write("\nDigite um nome para o produto: ");
             string nome = Console.ReadLine();
@@ -26,8 +37,8 @@ namespace ProjetoEmDupla1.Views
 
             Produto produto = new Produto(id, nome, valor, categoria);
 
-            return produto;          
-         }
+            return produto;
+        }
 
 
         public Categoria CadastroCategoria()
